@@ -1,0 +1,101 @@
+<div class="mat-elevation-z8">
+
+    <div class="table-name-filter">
+        <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        </mat-form-field>
+    </div>
+
+    <table mat-table [dataSource]="dataSource" matSort>
+
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="lon">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Lon </th>
+            <td mat-cell *matCellDef="let element"> {{element.coord.lon}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="lat">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Lat </th>
+            <td mat-cell *matCellDef="let element"> {{element.coord.lat}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="temp">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Temp </th>
+            <td mat-cell *matCellDef="let element"> {{element.main.temp}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="pressure">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Pressure </th>
+            <td mat-cell *matCellDef="let element"> {{element.main.pressure}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="humidity">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Humidity </th>
+            <td mat-cell *matCellDef="let element"> {{element.main.humidity}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="temp_min">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Temp/Min </th>
+            <td mat-cell *matCellDef="let element"> {{element.main.temp_min}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="temp_max">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Temp/Max </th>
+            <td mat-cell *matCellDef="let element"> {{element.main.temp_max}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="dt">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Dt </th>
+            <td mat-cell *matCellDef="let element"> {{element.dt}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="speed">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Speed </th>
+            <td mat-cell *matCellDef="let element"> {{element.wind.speed}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="deg">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Deg </th>
+            <td mat-cell *matCellDef="let element"> {{element.wind.deg}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="all">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> All </th>
+            <td mat-cell *matCellDef="let element"> {{element.clouds.all}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="w_id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Weather/ID </th>
+            <td mat-cell *matCellDef="let element"> {{element.weather[0].id}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="w_main">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Weather/Main </th>
+            <td mat-cell *matCellDef="let element"> {{element.weather[0].main}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="w_description">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Weather/Description </th>
+            <td mat-cell *matCellDef="let element"> {{element.weather[0].description}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="w_icon">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Weather/Icon </th>
+            <td mat-cell *matCellDef="let element"> {{element.weather[0].icon}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
